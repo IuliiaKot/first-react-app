@@ -66,6 +66,12 @@ export default class JustATributeApp extends Component {
     });
   }
 
+  onImageLayout(event) {
+        this.setState({
+            imageWidth: event.nativeEvent.layout.width
+        });
+    }
+
   render() {
     const image = Images[this.state.index];
     return (
@@ -74,7 +80,8 @@ export default class JustATributeApp extends Component {
             <TouchableHighlight onPress={this.nextImage.bind(this)}
                     style={styles.image}>
               <Image source={{uri: image.uri}}
-                     style={styles.image}>
+                     style={styles.image}
+                     onLayout={this.onImageLayout.bind(this)} >
                   <Text style={styles.imageLabel}>{image.label}</Text>
               </Image>
             </TouchableHighlight>
